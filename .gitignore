@@ -1,0 +1,42 @@
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+dist/
+build/
+*.log
+
+# TypeScript
+*.tsbuildinfo
+
+# Vite
+.vite/
+
+# Prisma
+prisma/dev.db
+prisma/dev.db-journal
+.env
+.env.local
+.env.*.local
+
+# Electron
+/out/
+*.asar
+*.local
+
+# VS Code
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Mac/Linux Trash
+.Trashes
+
+# Windows
+*.lnk
+ehthumbs.db

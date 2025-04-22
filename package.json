@@ -1,0 +1,38 @@
+{
+  "name": "electron-vue-auth",
+  "version": "1.0.0",
+  "main": "dist/main.js",
+  "scripts": {
+    "build:main": "tsc main/main.ts --outDir dist --module commonjs",
+    "dev": "concurrently \"cd frontend && vite\" \"wait-on http://localhost:5173 && npm run build:main && electron .\"",
+    "build": "vite build --cwd frontend && electron-builder",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev --name init"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.0.0",
+    "bcryptjs": "^2.4.3",
+    "electron": "^28.0.0"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "cross-env": "^7.0.3",
+    "electron-builder": "^24.6.0",
+    "prisma": "^5.0.0",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.0",
+    "wait-on": "^7.0.1"
+  },
+  "build": {
+    "appId": "com.auth.desktop",
+    "files": [
+      "dist/",
+      "main/",
+      "frontend/",
+      "sessions.ts",
+      "preload.js",
+      "package.json",
+      "node_modules/"
+    ]
+  }
+}
