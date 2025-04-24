@@ -2,37 +2,35 @@
   <button
     class="ripple-button"
     :class="[variantClass]"
-    @click="createRipple"
+    @mousedown="createRipple"
     :disabled="disabled"
   >
     <slot />
-    <span
-      v-for="r in ripples"
-      :key="r.id"
-      class="ripple"
-      :style="r.style"
-    />
+    <span v-for="r in ripples" :key="r.id" class="ripple" :style="r.style" />
   </button>
+</template>
 
-  </template>
-  
-  <script setup lang="ts">
- import { ref, computed } from 'vue'
+<script setup lang="ts">
+import { ref, computed } from "vue";
+
+defineOptions({
+  name: "Button",
+});
 
 const props = defineProps<{
-  variant?: 'primary' | 'secondary' | 'danger' | 'success'
-  disabled?: boolean
-}>()
+  variant?: "primary" | "secondary" | "danger" | "success";
+  disabled?: boolean;
+}>();
 
-const ripples = ref<{ id: number; style: any }[]>([])
-let rippleId = 0
+const ripples = ref<{ id: number; style: any }[]>([]);
+let rippleId = 0;
 
 function createRipple(event: MouseEvent) {
-  const button = event.currentTarget as HTMLElement
-  const rect = button.getBoundingClientRect()
-  const size = Math.max(rect.width, rect.height)
-  const x = event.clientX - rect.left - size / 2
-  const y = event.clientY - rect.top - size / 2
+  const button = event.currentTarget as HTMLElement;
+  const rect = button.getBoundingClientRect();
+  const size = Math.max(rect.width, rect.height);
+  const x = event.clientX - rect.left - size / 2;
+  const y = event.clientY - rect.top - size / 2;
 
   const newRipple = {
     id: rippleId++,
@@ -40,25 +38,24 @@ function createRipple(event: MouseEvent) {
       width: `${size}px`,
       height: `${size}px`,
       left: `${x}px`,
-      top: `${y}px`
-    }
-  }
+      top: `${y}px`,
+    },
+  };
 
-  ripples.value.push(newRipple)
+  ripples.value.push(newRipple);
 
   setTimeout(() => {
-    ripples.value = ripples.value.filter(r => r.id !== newRipple.id)
-  }, 600)
+    ripples.value = ripples.value.filter((r) => r.id !== newRipple.id);
+  }, 600);
 }
 
 const variantClass = computed(() => {
-  return `variant--${props.variant || 'primary'}`
-})
+  return `variant--${props.variant || "primary"}`;
+});
+</script>
 
-  </script>
-  
-  <style scoped>
- .ripple-button {
+<style scoped>
+.ripple-button {
   position: relative;
   overflow: hidden;
   color: white;
@@ -104,10 +101,13 @@ const variantClass = computed(() => {
 }
 
 .variant--secondary {
-  background-color: #6c757d;
+  background-color: transparent;
+  color: black;
+  border: 1px solid black;
 }
 .variant--secondary:hover {
-  background-color: #5a6268;
+  background-color: transparent;
+  box-shadow: 0 4px 4px #a8a3aa;
 }
 
 .variant--danger {
@@ -123,6 +123,4 @@ const variantClass = computed(() => {
 .variant--success:hover {
   background-color: #218838;
 }
-
-  </style>
-  
+</style>

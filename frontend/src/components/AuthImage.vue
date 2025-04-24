@@ -119,8 +119,8 @@
 
 <style scoped>
 .splash-screen {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background: linear-gradient(to bottom left, #0d87c4, #095e93, #1a4277);
   overflow: hidden;
   position: relative;
@@ -133,7 +133,7 @@
   position: absolute;
   top: 35%;
   left: 50%;
-  transform: translateX(-50%)
+  transform: translateX(-50%);
 }
 
 .globus {

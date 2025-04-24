@@ -1,16 +1,14 @@
 <script setup lang="ts">
-import AuthImage from './components/AuthImage.vue';
-import Login from './views/Login.vue';
-
 </script>
 
 <template>
   <div>
-    <AuthImage/>
-  <Login/>
+    <!-- <nav>
+      <router-link to="/login">Login</router-link> |
+      <router-link to="/registration">Registration</router-link>
+    </nav> -->
+    <router-view />
   </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
