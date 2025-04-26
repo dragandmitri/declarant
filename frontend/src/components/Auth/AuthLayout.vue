@@ -19,7 +19,7 @@
 </template>
 
 <script setup lang="ts">
-import AuthImage from "@/components/AuthImage.vue";
+import AuthImage from "@/components/Auth/AuthImage.vue";
 </script>
 
 <style scoped>

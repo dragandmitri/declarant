@@ -28,9 +28,9 @@
 
 <script setup lang="ts">
 import { reactive } from "vue";
-import Input from "../components/AuthInput.vue";
+import Input from "../components/Auth/AuthInput.vue";
 import Button from "../components/Button.vue";
-import AuthLayout from "@/components/AuthLayout.vue";
+import AuthLayout from "@/components/Auth/AuthLayout.vue";
 import {useRouter} from "vue-router";
 
 const form = reactive({

@@ -29,8 +29,8 @@
 
 <script setup lang="ts">
 import { reactive } from "vue";
-import AuthLayout from "@/components/AuthLayout.vue";
-import Input from "@/components/AuthInput.vue";
+import AuthLayout from "@/components/Auth/AuthLayout.vue";
+import Input from "@/components/Auth/AuthInput.vue";
 import Button from "@/components/Button.vue";
 import {useRouter} from "vue-router";
 
