@@ -1,22 +1,28 @@
 <template>
-  <div v-if="show" class="overlay">
-    <div class="drawer" :class="[{ closing: isClosing, opening: isOpening }]"
-    @animationend="handleAnimationEnd">
+  <div>
+    <div
+      class="drawer"
+      :class="[{ closing: isClosing, opening: isOpening }]"
+      @animationend="handleAnimationEnd"
+    >
       <div class="drawer-header">
         <div v-show="!isClosing" class="drawer-title">DECLARANT</div>
         <div class="drawer-icon">
           <slot name="drawerAction">
-            <CloseIcon v-if="!isClosing" class="close-icon" @click="closeDrawer" />
+            <CloseIcon
+              v-if="!isClosing"
+              class="close-icon"
+              @click="closeDrawer"
+            />
             <BurgerIcon v-else class="burger-icon" @click="openDrawer" />
           </slot>
         </div>
       </div>
       <div class="drawer-content">
-
-        <slot name="drawer-content">
-        </slot>
+        <slot name="drawer-content"> </slot>
       </div>
     </div>
+    <div></div>
   </div>
 </template>
 
@@ -36,18 +42,18 @@ const isOpening = ref(false);
 
 function handleAnimationEnd() {
   if (isClosing.value) {
-    emit('close');
+    emit("close");
   }
 }
 
 function closeDrawer() {
   isClosing.value = true;
-  isOpening.value = false
+  isOpening.value = false;
 }
 
 function openDrawer() {
   isClosing.value = false;
-  isOpening.value = true
+  isOpening.value = true;
 }
 
 watch(
@@ -60,11 +66,10 @@ watch(
     }
   }
 );
-
 </script>
 
 <style scoped>
-.overlay {
+/* .overlay {
   position: fixed;
   inset: 0;
   background-color: #f4f4f4;
@@ -72,18 +77,21 @@ watch(
   display: flex;
   justify-content: flex-start;
   align-items: stretch;
-}
+} */
 
 .drawer {
-  background: linear-gradient(to bottom , #0f83bd, #1171ad, #3266aa);
+  position: relative;
+  background: linear-gradient(to bottom, #0f83bd, #1171ad, #3266aa);
   color: #dbeaf1;
   height: 100%;
-  width: 260px;
+  width: 100%;
+  max-width: max-content;
   box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
   animation: slideIn 0.3s ease forwards;
   display: flex;
   flex-direction: column;
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .drawer-header {
@@ -152,5 +160,4 @@ watch(
     width: 65px;
   }
 }
-
 </style>
